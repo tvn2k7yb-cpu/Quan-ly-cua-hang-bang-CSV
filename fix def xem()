@@ -1,0 +1,16 @@
+def xem(ten_file):
+    try:
+        with open(ten_file,"r",encoding="utf-8") as f:
+            ds=f.readlines()
+            if not ds:
+                print("Cửa hàng trống!")
+                return 
+            print("---CỬA HÀNG---")
+            print("-"*30)
+            print("{:<10}{:<10}{:<10}{:<10}".format("Mã hàng","Tên hàng","Giá","Số lượng"))
+            for dong in ds:
+                noi_dung=dong.strip().split("|")
+                print(f"{noi_dung[0]:10}{noi_dung[1]:10}{noi_dung[2]:10}{noi_dung[3]}")
+            print("-"*30)
+    except FileNotFoundError:
+        print("Chưa có cửa hàng")
